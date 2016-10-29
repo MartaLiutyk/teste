@@ -5,6 +5,7 @@
 #include <ctype.h>
 
 int main(int argc, string argv[])
+  //перевірка 
 {
 string key = argv[1];
 if (argc !=2)
@@ -22,14 +23,14 @@ return 1;
 }
 }
 
-string text;
-text = GetString();
-char keyLengthOfText[strlen(text)];
+string TextToChange;
+TextToChange = GetString();
+char keyLengthOfText[strlen(TextToChange)];
 
-for ( int i = 0, j = 0; i < strlen(text); i++)
+for ( int i = 0, j = 0; i < strlen(TextToChange); i++)
 {
-if (((text[i] >= 65) && (text[i] <= 90))
-|| ((text[i] >= 97) && (text[i] <= 122)))
+if (((TextToChange[i] >= 65) && (TextToChange[i] <= 90))
+|| ((TextToChange[i] >= 97) && (TextToChange[i] <= 122)))
 {
 keyLengthOfText[i] = keyword[j % strlen(keyword)];
 j++;
@@ -37,18 +38,18 @@ j++;
 }
 
 
-for (int i = 0; i < strlen(text); i++)
+for (int i = 0; i < strlen(TextToChange); i++)
 {
-if ((text[i] >= 65) && (text[i] <= 90))
+if ((TextToChange[i] >= 65) && (TextToChange[i] <= 90))
 {
-text[i] = 65 + (text[i] - 65 + toupper(keyLengthOfText[i]) - 65)%26;
+TextToChange[i] = 65 + (TextToChange[i] - 65 + toupper(keyLengthOfText[i]) - 65)%26;
 }
 
-else if ((text[i] >= 97) && (text[i] <= 122))
+else if ((TextToChange[i] >= 97) && (TextToChange[i] <= 122))
 {
-text[i] = 97 + (text[i] - 97 + tolower(keyLengthOfText[i]) - 97)%26;
+TextToChange[i] = 97 + (TextToChange[i] - 97 + tolower(keyLengthOfText[i]) - 97)%26;
 }
 }
-printf("%s\n", text);
+printf("%s\n", TextToChange);
 return 0;
 }
