@@ -4,6 +4,13 @@
 #include <string.h>
 #include <ctype.h>
 
+#define SMALL_LETTER_A 97
+#define CAPITAL_LETTER_A 65
+#define LETTERS_NUMBER 26
+#define END_OF_BIG_LETTERS 90
+#define END_OF_SMALL_LETTERS 122
+
+
 int main(int argc, string argv[])
   //перевірка 
 {
@@ -29,8 +36,8 @@ char keyLengthOfText[strlen(TextToChange)];
 
 for ( int i = 0, j = 0; i < strlen(TextToChange); i++)
 {
-if (((TextToChange[i] >= 65) && (TextToChange[i] <= 90))
-|| ((TextToChange[i] >= 97) && (TextToChange[i] <= 122)))
+if (((TextToChange[i] >= CAPITAL_LETTER_A) && (TextToChange[i] <= END_OF_BIG_LETTERS))
+|| ((TextToChange[i] >= SMALL_LETTER_A) && (TextToChange[i] <= END_OF_SMALL_LETTERS)))
 {
 keyLengthOfText[i] = keyword[j % strlen(keyword)];
 j++;
@@ -40,14 +47,14 @@ j++;
 
 for (int i = 0; i < strlen(TextToChange); i++)
 {
-if ((TextToChange[i] >= 65) && (TextToChange[i] <= 90))
+if ((TextToChange[i] >= CAPITAL_LETTER_A) && (TextToChange[i] <= END_OF_BIG_LETTERS))
 {
-TextToChange[i] = 65 + (TextToChange[i] - 65 + toupper(keyLengthOfText[i]) - 65)%26;
+TextToChange[i] = CAPITAL_LETTER_A + (TextToChange[i] - CAPITAL_LETTER_A + toupper(keyLengthOfText[i]) - CAPITAL_LETTER_A)%LETTERS_NUMBER;
 }
 
-else if ((TextToChange[i] >= 97) && (TextToChange[i] <= 122))
+else if ((TextToChange[i] >= SMALL_LETTER_A) && (TextToChange[i] <= END_OF_SMALL_LETTERS))
 {
-TextToChange[i] = 97 + (TextToChange[i] - 97 + tolower(keyLengthOfText[i]) - 97)%26;
+TextToChange[i] = SMALL_LETTER_A + (TextToChange[i] - SMALL_LETTER_A + tolower(keyLengthOfText[i]) - SMALL_LETTER_A)%LETTERS_NUMBER;
 }
 }
 printf("%s\n", TextToChange);
